@@ -19,7 +19,7 @@ struct ContentView: View {
                         // next page
                         Text(user.name)
                     } label: {
-                        UserItem(user: user)
+                        UserListCell(user: user)
                     }
                 }
             }.refreshable {
@@ -65,7 +65,7 @@ extension ContentView {
     }
 }
 
-struct UserItem: View {
+struct UserListCell: View {
     let user: User
 
     var body: some View {
