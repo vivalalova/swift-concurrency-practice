@@ -16,6 +16,7 @@ struct ContentView: View {
             List {
                 ForEach(self.model.users) { user in
                     NavigationLink {
+                        // next page
                         Text(user.name)
                     } label: {
                         UserItem(user: user)
@@ -26,7 +27,8 @@ struct ContentView: View {
             }
             .onAppear {
                 self.model.fetchUsers()
-            }.navigationTitle("hihi")
+            }
+            .navigationTitle("hihi")
         }
     }
 }
