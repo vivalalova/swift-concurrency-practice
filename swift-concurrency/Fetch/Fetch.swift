@@ -12,16 +12,17 @@ enum Fetch {
         case notUrl
     }
 
-    static func request<T: Codable>(from urlString: String) async -> T? {
+    static func request<T: Codable>(from urlString: String) async -> Result<T?, Error> {
         guard let url = URL(string: urlString) else {
-            return nil
+            return .failure(FetchError.notUrl)
         }
 
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
-            return try JSONDecoder().decode(T.self, from: data)
+            let user = try JSONDecoder().decode(T.self, from: data)
+            return .success(user)
         } catch {
-            return nil
+            return .failure(error)
         }
     }
 

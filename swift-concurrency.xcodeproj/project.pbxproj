@@ -13,6 +13,7 @@
 		9E93480926BD23E5008830D1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E93480826BD23E5008830D1 /* Preview Assets.xcassets */; };
 		9E93481026BD351D008830D1 /* Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E93480F26BD351D008830D1 /* Fetch.swift */; };
 		9E93481226BD35AC008830D1 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E93481126BD35AC008830D1 /* Users.swift */; };
+		9EBC711726BD844F00F37491 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBC711626BD844F00F37491 /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		9E93480826BD23E5008830D1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9E93480F26BD351D008830D1 /* Fetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetch.swift; sourceTree = "<group>"; };
 		9E93481126BD35AC008830D1 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
+		9EBC711626BD844F00F37491 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +59,8 @@
 			children = (
 				9E93480126BD23E4008830D1 /* swift_concurrencyApp.swift */,
 				9E93480326BD23E4008830D1 /* ContentView.swift */,
-				9E93480F26BD351D008830D1 /* Fetch.swift */,
+				9EBC711826BD84A400F37491 /* Fetch */,
+				9EBC711626BD844F00F37491 /* MainView.swift */,
 				9E93481126BD35AC008830D1 /* Users.swift */,
 				9E93480526BD23E5008830D1 /* Assets.xcassets */,
 				9E93480726BD23E5008830D1 /* Preview Content */,
@@ -71,6 +74,14 @@
 				9E93480826BD23E5008830D1 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9EBC711826BD84A400F37491 /* Fetch */ = {
+			isa = PBXGroup;
+			children = (
+				9E93480F26BD351D008830D1 /* Fetch.swift */,
+			);
+			path = Fetch;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +157,7 @@
 				9E93481226BD35AC008830D1 /* Users.swift in Sources */,
 				9E93481026BD351D008830D1 /* Fetch.swift in Sources */,
 				9E93480426BD23E4008830D1 /* ContentView.swift in Sources */,
+				9EBC711726BD844F00F37491 /* MainView.swift in Sources */,
 				9E93480226BD23E4008830D1 /* swift_concurrencyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
