@@ -8,6 +8,10 @@
 import Foundation
 
 enum Fetch {
+    enum FetchError: Error {
+        case notUrl
+    }
+
     static func request<T: Codable>(from urlString: String) async -> T? {
         guard let url = URL(string: urlString) else {
             return nil
@@ -21,16 +25,17 @@ enum Fetch {
         }
     }
 
-    static func request<T: Codable>(from urlString: String) async -> [T] {
+    static func request<T: Codable>(from urlString: String) async -> Result<[T], Error> {
         guard let url = URL(string: urlString) else {
-            return []
+            return .failure(FetchError.notUrl)
         }
 
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
-            return try JSONDecoder().decode([T].self, from: data)
+            let users = try JSONDecoder().decode([T].self, from: data)
+            return .success(users)
         } catch {
-            return []
+            return .failure(error)
         }
     }
 }

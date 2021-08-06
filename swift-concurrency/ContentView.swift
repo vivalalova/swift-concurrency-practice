@@ -18,6 +18,7 @@ struct ContentView: View {
                     NavigationLink {
                         // next page
                         Text(user.name)
+                            .navigationTitle(user.name)
                     } label: {
                         UserListCell(user: user)
                     }
@@ -43,12 +44,20 @@ extension ContentView {
     class ViewModel: ObservableObject {
         @Published var users: [User] = []
 
+        @Published var onError: Error?
+
         func fetchUsers() {
             Task(priority: .medium) {
-                let results: [User] = await Fetch.request(from: "https://jsonplaceholder.typicode.com/users")
+                let results: Result<[User], Error> = await Fetch.request(from: "https://jsonplaceholder.typicode.com/users")
 
                 DispatchQueue.main.async {
-                    self.users = results
+                    switch results {
+                    case let .success(users):
+                        self.users = users
+                    case let .failure(err):
+                        self.onError = err
+                        return
+                    }
                 }
             }
         }
