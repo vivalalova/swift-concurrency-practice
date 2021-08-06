@@ -36,13 +36,21 @@ struct ContentView: View {
     @StateObject var model = ViewModel()
 
     var body: some View {
-        List {
-            ForEach(self.model.users) { user in
-                Text(user.name)
+        NavigationView {
+            List {
+                ForEach(self.model.users) { user in
+                    NavigationLink {
+                        Text(user.name)
+                    } label: {
+                        UserItem(user: user)
+                    }
+                }
+            }.refreshable {
+                self.model.fetchUsers()
             }
-        }
-        .onAppear {
-            self.model.fetchUsers()
+            .onAppear {
+                self.model.fetchUsers()
+            }.navigationTitle("hihi")
         }
     }
 }
@@ -50,5 +58,18 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+struct UserItem: View {
+    let user: User
+
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(user.name)
+                .fontWeight(.semibold)
+            Text(user.website)
+                .foregroundColor(.gray)
+        }
     }
 }
