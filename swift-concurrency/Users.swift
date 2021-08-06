@@ -5,7 +5,7 @@
 //  Created by Lova on 2021/8/6.
 //
 
-import Foundation
+import SwiftUI
 
 struct User: Codable, Identifiable {
     struct Location: Codable {

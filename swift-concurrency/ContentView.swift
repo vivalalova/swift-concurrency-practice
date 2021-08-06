@@ -45,7 +45,11 @@ extension ContentView {
 
         func fetchUsers() {
             Task(priority: .medium) {
-                self.users = await Fetch.request(from: "https://jsonplaceholder.typicode.com/users")
+                let results: [User] = await Fetch.request(from: "https://jsonplaceholder.typicode.com/users")
+
+                DispatchQueue.main.async {
+                    self.users = results
+                }
             }
         }
 
